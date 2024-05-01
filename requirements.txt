@@ -1,0 +1,6 @@
+Flask
+pymongo
+python-dotenv
+Gunicorn
+pytz
+pandas
