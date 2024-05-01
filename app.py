@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 cluster = MongoClient(mongo_uri)
 db = cluster[db_name]
-collection = db['ysab']
+collection = db['ysab-continuation']
 
 def get_app_num():
     cluster = MongoClient(mongo_uri)
