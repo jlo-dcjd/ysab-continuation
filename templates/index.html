@@ -157,9 +157,23 @@
       Amount Requested For The Continuation Period
       </label>
       <div>
-        <input id="amount_requested" name="amount_requested" type="number" value="" size="8" tabindex="1" min="1" max="99999" oninput="checkField('amount_requested', 'problem_statement')" disabled>
+        <input id="amount_requested" name="amount_requested" type="number" value="" size="8" tabindex="1" min="1" max="99999" oninput="checkField('amount_requested', 'budget_admended')" disabled>
      </div>
   </div>
+
+
+  <div>
+    <label for="budget_admended">
+        Will budget be admended? (If Yes, complete budget admended below. If No, then do not complete the budget admendment)
+    </label>
+    <div>
+    <select id="budget_admended" name="budget_admended" class="field select medium" tabindex="11" oninput="checkField('budget_admended', 'problem_statement')" disabled> 
+      <option disabled selected>Choose an item</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+</div>
 
     <h3>Problem Statement</h3>
 
@@ -178,6 +192,247 @@
         <textarea id="continuation_justification" name="continuation_justification" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 250 words" disabled></textarea>
       </div>
   </div>
+
+  <h3>Budget Admendment</h3>
+    <br>
+    <div>
+      <label class="desc" id="budget_estimate" for="budget_estimate"><b>Budget Estimate</b>: Indicate the different categories of expenses proposed in the project. Provide, in the “Description” column, an explanation of each expense associated with the category.  Expenses listed in the budget must be justified in the Project Approach & Activities section.</label>
+      <div>
+        <p>Category definitions: Use the follow category definitions as guidelines for selecting the appropriate label.</p>
+        <ul>
+          <li><b>Food</b>: Expenses related to food for various occasions. Items could include but not limited to: lunch, dinners, snacks, refreshments, pantry items.</li>
+          <li><b>Gifts</b>: Expenditures made as a gesture of goodwill, appreciation, or celebration. They are not tied to incentives or rewards for specific achievements or behaviors. Items could include but not limited to: gift bags, small electronics, notebooks, makeup.</li>
+          <li><b>SEM (Supplies, Equipment, Materials)</b>: Expenditures related to supplies, equipment, or materials for enchancing the program's activities and enriching the experience for participants. Items could include but not limited to: school/art supplies, games (table games, board games, gym games, etc.), books, decorations.</li>
+          <li><b>Field Trips</b>: Expenditures related to organizing and facilitating educational or recreational outings outside of the program's usual location.</li>
+          <li><b>Clothing</b>: Expenditures related to the purchase of clothing items such as uniforms, or other attire, as needed.</li>
+          <li><b>Scholarships</b>: Expenditures related to providing financial assistance to individuals to support their education. Scholarships may take various forms, including monetary awards, educational materials such as textbooks or laptops, or direct payment for tuition and/or fees to educational institutions.</li>
+          <li><b>Other</b>: For expenditures that do not fit into any of the predefined budget categories.</li>
+        </ul>
+      </div>
+      <div>
+    
+        <table id="budget_estimate">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Cost per Item</th>
+                    <th>Number of Items</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>      
+                      <select id="category1" name="category1" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description1"></td>
+                    <td><input type="text" name="cost1"></td>
+                    <td><input type="text" name="items1"></td>
+                    <td><input type="text" name="total1" readonly></td>
+                </tr>
+                <tr>
+                    <td>      
+                      <select id="category2" name="category2" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description2"></td>
+                    <td><input type="text" name="cost2"></td>
+                    <td><input type="text" name="items2"></td>
+                    <td><input type="text" name="total2" readonly></td>
+                </tr>
+                <tr>
+                    <td>      
+                      <select id="category3" name="category3" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description3"></td>
+                    <td><input type="text" name="cost3"></td>
+                    <td><input type="text" name="items3"></td>
+                    <td><input type="text" name="total3" readonly></td>
+                </tr>
+                <tr>
+                  <td>      
+                    <select id="category4" name="category4" class="field select medium" tabindex="11"> 
+                      <option value="Null"></option>
+                      <option value="Food">Food</option>
+                      <option value="Gifts">Gifts</option>
+                      <option value="SEM">SEM</option>
+                      <option value="Field Trips">Field Trips</option>
+                      <option value="Clothes">Clothes</option>
+                      <option value="Scholarships">Scholarships</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </td>
+                    <td><input type="text" name="description4"></td>
+                    <td><input type="text" name="cost4"></td>
+                    <td><input type="text" name="items4"></td>
+                    <td><input type="text" name="total4" readonly></td>
+                </tr>
+                <tr>
+                    <td>      
+                      <select id="category5" name="category5" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description5"></td>
+                    <td><input type="text" name="cost5"></td>
+                    <td><input type="text" name="items5"></td>
+                    <td><input type="text" name="total5" readonly></td>
+                </tr>
+                <tr>
+                    <td>      
+                      <select id="category6" name="category6" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description6"></td>
+                    <td><input type="text" name="cost6"></td>
+                    <td><input type="text" name="items6"></td>
+                    <td><input type="text" name="total6" readonly></td>
+                </tr>
+                <tr>
+                    <td>      
+                      <select id="category" name="category" class="field select medium" tabindex="11"> 
+                        <option value="Null"></option>
+                        <option value="Food">Food</option>
+                        <option value="Gifts">Gifts</option>
+                        <option value="SEM">SEM</option>
+                        <option value="Field Trips">Field Trips</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Scholarships">Scholarships</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                    <td><input type="text" name="description7"></td>
+                    <td><input type="text" name="cost7"></td>
+                    <td><input type="text" name="items7"></td>
+                    <td><input type="text" name="total7" readonly></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    
+      <div>
+        <table class="grand-total-table" id="budget_estimate">
+          <thead>
+              <tr>
+                  <th>Overall Project Cost</th>
+                  <td><input type="text" name="grandTotal" id="grandTotal" readonly></td>
+              </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div>
+        <table class="grand-total-table" id="youth_total">
+          <thead>
+            <tr>
+              <th>Number of Youth Who Will Benefit</th>
+              <td><input type="text" name="youth_total" id="youth_total_input" required></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      
+      <div>
+        <table class="grand-total-table" id="benefit_per_youth">
+          <thead>
+            <tr>
+              <th>Individual Youth Benefit ($)</th>
+              <td><input type="text" name="benefit_per_youth" id="benefit_per_youth" readonly></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      
+      <script>
+        // JavaScript to calculate the total based on cost per item and number of items
+        document.addEventListener("input", function(e) {
+          if (e.target.name.startsWith("cost") || e.target.name.startsWith("items")) {
+            const index = e.target.name.slice(-1);
+            const cost = parseFloat(document.getElementsByName("cost" + index)[0].value) || 0;
+            const items = parseInt(document.getElementsByName("items" + index)[0].value) || 0;
+            const total = cost * items;
+            document.getElementsByName("total" + index)[0].value = total.toFixed(2);
+      
+            // Calculate and update the Grand Total
+            calculateGrandTotal();
+          }
+        });
+      
+        function calculateGrandTotal() {
+          const totalInputs = document.querySelectorAll('[name^="total"]');
+          let grandTotal = 0;
+          totalInputs.forEach(input => {
+            grandTotal += parseFloat(input.value) || 0;
+          });
+          document.getElementById("grandTotal").value = grandTotal.toFixed(2);
+        }
+      
+        document.addEventListener("input", function(e) {
+          if (e.target.id === "grandTotal" || e.target.id === "youth_total_input") {
+            calculateBenefitPerYouth();
+          }
+        });
+
+        function calculateBenefitPerYouth() {
+          // console.log("Calculating benefit per youth...");
+          const budgetEstimate = parseFloat(document.getElementById('grandTotal').value);
+          const youthTotal = parseInt(document.getElementById('youth_total_input').value);
+          const benefitPerYouthInput = document.querySelector('[name="benefit_per_youth"]');
+
+          if (!isNaN(budgetEstimate) && !isNaN(youthTotal) && youthTotal !== 0) {
+            const benefitPerYouth = budgetEstimate / youthTotal;
+            // console.log("Benefit per youth:", benefitPerYouth.toFixed(2));
+            benefitPerYouthInput.value = benefitPerYouth.toFixed(2);
+          } else {
+            benefitPerYouthInput.value = '';
+          }
+        }
+      </script>
+    </div> 
+
+  </div> 
   
     <br><br>
     <div>
@@ -196,6 +451,6 @@
   </form>
 
   <footer>
-    <p>Date Updated: May 2, 2024<br>
+    <p>Date Updated: May 6, 2024<br>
   </footer>
 </html>
