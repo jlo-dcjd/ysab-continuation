@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Continuation</title>   
-  <link rel="icon" href="{{url_for('static', filename='images/fav-icon.svg')}}">
+  <link rel="icon" href="{{url_for('static', filename='images/ysab-icon-green.svg')}}">
 </head>
 
 <form action="/submit_form" method="POST">
@@ -25,7 +25,82 @@
           </ol>
 
     <p><b>Disclamer:</b> For privacy and security reasons, please be advised not to include any confidential or sensitive information in your submission.</p>
-    
+
+    <div>
+      <label for="app_record">
+        Select Application Record
+      </label>
+      <div>
+        <select id="app_record" name="app_record">
+          <option disabled selected>Choose an item</option>
+          {% for item in app_list %}
+            {% set split_item = item.split(' : ') %}
+            {% set display_item = split_item[0] ~ ' : ' ~ split_item[1] %}
+          <option value="{{ item }}">{{ display_item }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("app_record").addEventListener("change", function() {
+        // Get the selected option
+        var selectedOption = this.options[this.selectedIndex];
+        // Split the value of selected option to get name, email, and project title
+        var values = selectedOption.value.split(' : ');
+        // Populate the fields
+        document.getElementById("name").value = values[1];
+        document.getElementById("app_title").value = values[2];
+        document.getElementById("email").value = values[3];
+        document.getElementById("phone").value = values[4];
+        document.getElementById("title").value = values[5];
+        document.getElementById("amount_awarded").value = parseInt(values[6]);
+        document.getElementById("service_area").value = values[7];
+        document.getElementById("facility").value = values[8];
+        document.getElementById("address").value = values[9];
+        document.getElementById("problem_statement").value = values[10];
+        document.getElementById("category1").value = values[11];
+        document.getElementById("category2").value = values[12];
+        document.getElementById("category3").value = values[13];
+        document.getElementById("category4").value = values[14];
+        document.getElementById("category5").value = values[15];
+        document.getElementById("category6").value = values[16];
+        document.getElementById("category7").value = values[17];
+        document.getElementById("description1").value = values[18];
+        document.getElementById("description2").value = values[19];
+        document.getElementById("description3").value = values[20];
+        document.getElementById("description4").value = values[21];
+        document.getElementById("description5").value = values[22];
+        document.getElementById("description6").value = values[23];
+        document.getElementById("description7").value = values[24];
+       document.getElementById("cost1").value = values[25];
+        document.getElementById("cost2").value = values[26];
+        document.getElementById("cost3").value = values[27];
+        document.getElementById("cost4").value = values[28];
+        document.getElementById("cost5").value = values[29];
+        document.getElementById("cost6").value = values[30];
+        document.getElementById("cost7").value = values[31];
+       document.getElementById("items1").value = values[32];
+        document.getElementById("items2").value = values[33];
+        document.getElementById("items3").value = values[34];
+        document.getElementById("items4").value = values[35];
+        document.getElementById("items5").value = values[36];
+        document.getElementById("items6").value = values[37];
+        document.getElementById("items7").value = values[38];
+        document.getElementById("total1").value = values[39];
+        document.getElementById("total2").value = values[40];
+        document.getElementById("total3").value = values[41];
+        document.getElementById("total4").value = values[42];
+        document.getElementById("total5").value = values[43];
+        document.getElementById("total6").value = values[44];
+        document.getElementById("total7").value = values[45];
+        document.getElementById("grandTotal").value = values[46];
+        document.getElementById("youth_total_input").value = values[47];
+        document.getElementById("benefit_per_youth").value = values[48];
+
+        });
+    </script>
+
     <div>
     <br>
       <label for="name">Applicant Name</label>
@@ -235,10 +310,10 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description1"></td>
-                    <td><input type="text" name="cost1"></td>
-                    <td><input type="text" name="items1"></td>
-                    <td><input type="text" name="total1" readonly></td>
+                    <td><input type="text" id="description1" name="description1"></td>
+                    <td><input type="text" id="cost1" name="cost1"></td>
+                    <td><input type="text" id="items1" name="items1"></td>
+                    <td><input type="text" id="total1" name="total1"></td>
                 </tr>
                 <tr>
                     <td>      
@@ -253,10 +328,10 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description2"></td>
-                    <td><input type="text" name="cost2"></td>
-                    <td><input type="text" name="items2"></td>
-                    <td><input type="text" name="total2" readonly></td>
+                    <td><input type="text" id="description2" name="description2"></td>
+                    <td><input type="text" id="cost2" name="cost2"></td>
+                    <td><input type="text" id="items2" name="items2"></td>
+                    <td><input type="text" id="total2" name="total2"></td>
                 </tr>
                 <tr>
                     <td>      
@@ -271,10 +346,10 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description3"></td>
-                    <td><input type="text" name="cost3"></td>
-                    <td><input type="text" name="items3"></td>
-                    <td><input type="text" name="total3" readonly></td>
+                    <td><input type="text" id="description3" name="description3"></td>
+                    <td><input type="text" id="cost3" name="cost3"></td>
+                    <td><input type="text" id="items3" name="items3"></td>
+                    <td><input type="text" id="total3" name="total3"></td>
                 </tr>
                 <tr>
                   <td>      
@@ -289,10 +364,10 @@
                       <option value="Other">Other</option>
                     </select>
                   </td>
-                    <td><input type="text" name="description4"></td>
-                    <td><input type="text" name="cost4"></td>
-                    <td><input type="text" name="items4"></td>
-                    <td><input type="text" name="total4" readonly></td>
+                    <td><input type="text" id="description4" name="description4"></td>
+                    <td><input type="text" id="cost4" name="cost4"></td>
+                    <td><input type="text" id="items4" name="items4"></td>
+                    <td><input type="text" id="total4" name="total4"></td>
                 </tr>
                 <tr>
                     <td>      
@@ -307,10 +382,10 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description5"></td>
-                    <td><input type="text" name="cost5"></td>
-                    <td><input type="text" name="items5"></td>
-                    <td><input type="text" name="total5" readonly></td>
+                    <td><input type="text" id="description5" name="description5"></td>
+                    <td><input type="text" id="cost5" name="cost5"></td>
+                    <td><input type="text" id="items5" name="items5"></td>
+                    <td><input type="text" id="total5" name="total5"></td>
                 </tr>
                 <tr>
                     <td>      
@@ -325,14 +400,14 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description6"></td>
-                    <td><input type="text" name="cost6"></td>
-                    <td><input type="text" name="items6"></td>
-                    <td><input type="text" name="total6" readonly></td>
+                    <td><input type="text" id="description6" name="description6"></td>
+                    <td><input type="text" id="cost6" name="cost6"></td>
+                    <td><input type="text" id="items6" name="items6"></td>
+                    <td><input type="text" id="total6" name="total6"></td>
                 </tr>
                 <tr>
                     <td>      
-                      <select id="category" name="category" class="field select medium" tabindex="11"> 
+                      <select id="category7" name="category7" class="field select medium" tabindex="11"> 
                         <option value="Null"></option>
                         <option value="Food">Food</option>
                         <option value="Gifts">Gifts</option>
@@ -343,10 +418,10 @@
                         <option value="Other">Other</option>
                       </select>
                     </td>
-                    <td><input type="text" name="description7"></td>
-                    <td><input type="text" name="cost7"></td>
-                    <td><input type="text" name="items7"></td>
-                    <td><input type="text" name="total7" readonly></td>
+                    <td><input type="text" id="description7" name="description7"></td>
+                    <td><input type="text" id="cost7" name="cost7"></td>
+                    <td><input type="text" id="items7" name="items7"></td>
+                    <td><input type="text" id="total7" name="total7"></td>
                 </tr>
             </tbody>
         </table>
@@ -357,7 +432,7 @@
           <thead>
               <tr>
                   <th>Overall Project Cost</th>
-                  <td><input type="text" name="grandTotal" id="grandTotal" readonly></td>
+                  <td><input type="text" name="grandTotal" id="grandTotal"></td>
               </tr>
           </thead>
         </table>
@@ -375,11 +450,11 @@
       </div>
       
       <div>
-        <table class="grand-total-table" id="benefit_per_youth">
+        <table class="grand-total-table">
           <thead>
             <tr>
               <th>Individual Youth Benefit ($)</th>
-              <td><input type="text" name="benefit_per_youth" id="benefit_per_youth" readonly></td>
+              <td><input type="text" name="benefit_per_youth" id="benefit_per_youth"></td>
             </tr>
           </thead>
         </table>
@@ -451,6 +526,6 @@
   </form>
 
   <footer>
-    <p>Date Updated: May 6, 2024<br>
+    <p>Date Updated: May 8, 2024<br>
   </footer>
 </html>

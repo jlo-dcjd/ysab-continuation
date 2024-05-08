@@ -45,9 +45,24 @@ def app_id():
     unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{funding}-{form_type}"
     return unique_id
 
+# pre-populate fields auto
+def get_app_list():
+    cluster = MongoClient(mongo_uri)
+    db = cluster[db_name]
+    collection = db['ysab']
+    # Retrieve all records from the collection
+    cursor = collection.find()
+    # Convert the cursor to a list of dictionaries
+    records = list(cursor)
+    # Create a Pandas DataFrame
+    df = pd.DataFrame(records)
+    df['app_record'] = pd.concat([df.timestamp.str[:10], df[['name', 'app_title', 'email', 'phone', 'title', 'amount', 'service_area', 'facility', 'address', 'problem_statement', 'category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'description1', 'description2', 'description3', 'description4', 'description5', 'description6', 'description7', 'cost1', 'cost2', 'cost3', 'cost4', 'cost5', 'cost6', 'cost7', 'items1', 'items2', 'items3', 'items4', 'items5', 'items6', 'items7', 'total1', 'total2', 'total3', 'total4', 'total5', 'total6', 'total7', 'grandTotal', 'youth_total', 'benefit_per_youth']].astype(str)], axis=1).apply(lambda row: ' : '.join(row), axis=1)
+    cluster.close()
+    return df.app_record.to_list()
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', app_list = get_app_list())
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
