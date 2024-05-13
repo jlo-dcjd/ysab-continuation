@@ -114,7 +114,7 @@
         Applicant Title
         </label>
         <div>
-          <input id="app_title" name="app_title" type="text" size="8" tabindex="1" disabled oninput="checkField('app_title', 'email')">
+          <input id="app_title" name="app_title" type="text" size="8" tabindex="1" oninput="checkField('app_title', 'email')">
        </div>
     </div>
 
@@ -123,7 +123,7 @@
           Applicant Contact Email
         </label>
         <div>
-          <input id="email" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="3" required disabled oninput="checkField('email', 'phone')"> 
+          <input id="email" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="3" required oninput="checkField('email', 'phone')"> 
        </div>
     </div>
 
@@ -132,7 +132,7 @@
         Applicant Contact Phone Number
       </label>
       <div>
-        <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this);checkField('phone', 'title')" maxlength="12" required disabled>
+        <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this);checkField('phone', 'title')" maxlength="12" required>
       </div>
     </div>
   <script>
@@ -152,16 +152,17 @@
       // Update the input field value
       input.value = formattedPhoneNumber;
     }
-    function checkField(currentFieldId, nextFieldId) {
-        const currentField = document.getElementById(currentFieldId);
-        const nextField = document.getElementById(nextFieldId);
+
+    // function checkField(currentFieldId, nextFieldId) {
+    //     const currentField = document.getElementById(currentFieldId);
+    //     const nextField = document.getElementById(nextFieldId);
         
-        if (currentField.value.trim() !== '') {
-            nextField.removeAttribute('disabled');
-        } else {
-            nextField.setAttribute('disabled', 'disabled');
-        }
-    }
+    //     if (currentField.value.trim() !== '') {
+    //         nextField.removeAttribute('disabled');
+    //     } else {
+    //         nextField.setAttribute('disabled', 'disabled');
+    //     }
+    // }
   </script>
 
     <div>
@@ -179,7 +180,7 @@
           Project Title
         </label>
         <div>
-          <input id="title" name="title" type="text"  value="" size="8" tabindex="1" oninput="checkField('title', 'service_area')" disabled>
+          <input id="title" name="title" type="text"  value="" size="8" tabindex="1" oninput="checkField('title', 'service_area')">
        </div>
     </div>
 
@@ -188,7 +189,7 @@
             Service Area
         </label>
         <div>
-        <select id="service_area" name="service_area" class="field select medium" tabindex="11" oninput="checkField('service_area', 'facility')" disabled> 
+        <select id="service_area" name="service_area" class="field select medium" tabindex="11" oninput="checkField('service_area', 'facility')"> 
           <option disabled selected>Choose an item</option>
           <option value="Clinical Services">Clinical Services</option>
           <option value="Detention Services">Detention Services</option>
@@ -205,7 +206,7 @@
         Facility/Program to Administer the Project
         </label>
         <div>
-          <input id="facility" name="facility" type="text"  value="" size="8" tabindex="1" oninput="checkField('facility', 'address')" disabled>
+          <input id="facility" name="facility" type="text"  value="" size="8" tabindex="1" oninput="checkField('facility', 'address')">
        </div>
     </div>
 
@@ -214,7 +215,7 @@
         Address
         </label>
         <div>
-          <input id="address" name="address" type="text" value="" size="8" tabindex="1" oninput="checkField('address', 'amount_awarded')" disabled>
+          <input id="address" name="address" type="text" value="" size="8" tabindex="1" oninput="checkField('address', 'amount_awarded')">
        </div>
     </div>
 
@@ -223,7 +224,7 @@
         Original Amount Awarded
         </label>
         <div>
-          <input id="amount_awarded" name="amount_awarded" type="number" value="" size="8" tabindex="1" min="1" max="99999" oninput="checkField('amount_awarded', 'amount_requested')" disabled>
+          <input id="amount_awarded" name="amount_awarded" type="number" value="" size="8" tabindex="1" min="1" max="99999" oninput="checkField('amount_awarded', 'amount_requested')">
        </div>
     </div>
 
@@ -232,7 +233,7 @@
       Amount Requested For The Continuation Period
       </label>
       <div>
-        <input id="amount_requested" name="amount_requested" type="number" value="" size="8" tabindex="1" min="1" max="99999" oninput="checkField('amount_requested', 'budget_admended')" disabled>
+        <input id="amount_requested" name="amount_requested" type="number" value="" size="8" tabindex="1" min="1" max="99999" required oninput="checkField('amount_requested', 'budget_admended')">
      </div>
   </div>
 
@@ -242,7 +243,7 @@
         Will budget be admended? (If Yes, complete budget admended below. If No, then do not complete the budget admendment)
     </label>
     <div>
-    <select id="budget_admended" name="budget_admended" class="field select medium" tabindex="11" oninput="checkField('budget_admended', 'problem_statement')" disabled> 
+    <select id="budget_admended" name="budget_admended" class="field select medium" tabindex="11" oninput="checkField('budget_admended', 'problem_statement')"> 
       <option disabled selected>Choose an item</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option>
@@ -255,7 +256,7 @@
     <div>
       <label for="problem_statement">(Identify the continued challenges your program faces that will be addressed through using YSAB funds and how these funds will contribute to enhancing the program's objectives)</label>
       <div>
-        <textarea id="problem_statement" name="problem_statement" spellcheck="true" rows="6" cols="50" tabindex="4" placeholder="" oninput="checkField('problem_statement', 'continuation_justification')" disabled></textarea>
+        <textarea id="problem_statement" name="problem_statement" spellcheck="true" rows="6" cols="50" tabindex="4" placeholder="" oninput="checkField('problem_statement', 'continuation_justification')"></textarea>
       </div>
   </div>
 
@@ -264,7 +265,7 @@
     <div>
       <label for="continuation_justification">(<u><b>Justify</b></u> the continuation of this YSAB funded project)</label>
       <div>
-        <textarea id="continuation_justification" name="continuation_justification" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 250 words" disabled></textarea>
+        <textarea id="continuation_justification" name="continuation_justification" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 250 words"></textarea>
       </div>
   </div>
 
