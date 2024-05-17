@@ -38,11 +38,10 @@ def app_id():
     project_name = request.form.get('title')
     project_abbreviation = re.sub(r'[^a-zA-Z0-9\s]', '', project_name)
     project_abbreviation = "".join(word[0] for word in project_abbreviation.split())
-    funding = 'YSAB'
-    # form type - A: application M: progress report mid-term F: progress report final
-    form_type = 'A'
+    # form type - A: application M: progress report mid-term F: progress report final C: continuation
+    form_type = 'C'
     # Generate unique ID
-    unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{funding}-{form_type}"
+    unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{form_type}"
     return unique_id
 
 # pre-populate fields auto
