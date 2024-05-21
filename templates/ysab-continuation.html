@@ -1,105 +1,181 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Continuation</title>   
-  <link rel="icon" href="{{url_for('static', filename='images/ysab-icon-green.svg')}}">
+  <style>
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 20px 15%;
+    }
+    form header {
+      margin: 0 0 20px 0; 
+    }
+    form header div {
+      font-size: 90%;
+      color: #999;
+    }
+    form header h2 {
+      margin: 0 0 5px 0;
+    }
+    form > div {
+      clear: both;
+      overflow: hidden;
+      padding: 1px;
+      margin: 0 0 10px 0;
+    }
+    form > div > fieldset > div > div {
+      margin: 0 0 5px 0;
+    }
+    form > div > label,
+    legend {
+        width: 25%;
+      float: left;
+      padding-right: 10px;
+    }
+    form > div > div,
+    form > div > fieldset > div {
+      width: 75%;
+      float: right;
+    }
+    form > div > fieldset label {
+        font-size: 90%;
+    }
+    fieldset {
+        border: 0;
+      padding: 0;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=url],
+    input[type=password],
+    textarea {
+        width: 100%;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      resize: none;
+      overflow: none;
+    }
+    input[type=text],
+    input[type=email],
+    input[type=url],
+    input[type=password] {
+      width: 50%;
+    }
+    input[type=text]:focus,
+    input[type=email]:focus,
+    input[type=url]:focus,
+    input[type=password]:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: #4697e4;
+    }
+
+    @media (max-width: 600px) {
+      form > div {
+        margin: 0 0 15px 0; 
+      }
+      form > div > label,
+      legend {
+          width: 100%;
+        float: none;
+        margin: 0 0 5px 0;
+      }
+      form > div > div,
+      form > div > fieldset > div {
+        width: 100%;
+        float: none;
+      }
+      input[type=text],
+      input[type=email],
+      input[type=url],
+      input[type=password],
+      textarea,
+      select {
+        width: 100%; 
+      }
+    }
+    @media (min-width: 1200px) {
+      form > div > label,
+        legend {
+          text-align: right;
+      }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Adjust the width of the input text boxes */
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .grand-total-table {
+      width: 50%;
+      margin-top: 20px;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .container {
+      height: 110px;
+      position: relative;
+      text-align: center;
+    }
+
+    .submit-button {
+      position: absolute;
+      width: 150px;
+      height: 40px;
+      background-color: grey;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor:pointer
+    }
+
+    .value{
+      text-align:left;
+    }
+  </style>
 </head>
 
 <form action="/submit_form" method="POST">
 <div class="container">
   <div class="center">
-    <img src="{{url_for('static', filename='images/juvenile-logo.svg')}}" alt="Dallas Juvenile Logo" width="100" height="100">
+    <h2 style="color:blue">Submission Record</h2>
+    <h4></h4>
   </div>
 </div>
     <header>
       <h2>Dallas County Juror Fund YSAB Continuation Project (No Application) (YSAB Funds)</h2>
       <div>Dallas County jurors have the option of contributing their juror fund stipend to help at risk youth in the Dallas County Juvenile Department and the foster care system.  The Youth Services Advisory Board (YSAB) oversees the use of the Dallas County Juror Fund for special projects to address specific concerns related to juvenile crime prevention. In order to be eligible for YSAB recommendation, Dallas County Juvenile Department fund requestors must complete the following application. </div>
     </header>
-
-    <h3>Submission Instructions:</h2>
-        <ol>
-            <li>Applicants must answer all questions</li>
-            <li>Length of responses must adhere to the specified word limit indicated in the question</li>
-            <li>Applicants must click the submit button to complete the application</li>
-          </ol>
-
-    <p><b>Disclaimer:</b> For privacy and security reasons, please be advised not to include any confidential or sensitive information in your submission.</p>
-
-    <div>
-      <label for="app_record" style="color: #001aff">
-        <b>Select Application Record</b>
-      </label>
-      <div>
-        <select id="app_record" name="app_record">
-          <option disabled selected>Choose an item</option>
-          {% for item in app_list %}
-            {% set split_item = item.split(' : ') %}
-            {% set display_item = split_item[0] ~ ' : ' ~ split_item[1] %}
-          <option value="{{ item }}">{{ display_item }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-
-    <script>
-      document.getElementById("app_record").addEventListener("change", function() {
-        // Get the selected option
-        var selectedOption = this.options[this.selectedIndex];
-        // Split the value of selected option to get name, email, and project title
-        var values = selectedOption.value.split(' : ');
-        // Populate the fields
-        document.getElementById("name").value = values[1];
-        document.getElementById("app_title").value = values[2];
-        document.getElementById("email").value = values[3];
-        document.getElementById("phone").value = values[4];
-        document.getElementById("title").value = values[5];
-        document.getElementById("amount_awarded").value = parseInt(values[6]);
-        document.getElementById("service_area").value = values[7];
-        document.getElementById("facility").value = values[8];
-        document.getElementById("address").value = values[9];
-        document.getElementById("problem_statement").value = values[10];
-        document.getElementById("category1").value = values[11];
-        document.getElementById("category2").value = values[12];
-        document.getElementById("category3").value = values[13];
-        document.getElementById("category4").value = values[14];
-        document.getElementById("category5").value = values[15];
-        document.getElementById("category6").value = values[16];
-        document.getElementById("category7").value = values[17];
-        document.getElementById("description1").value = values[18];
-        document.getElementById("description2").value = values[19];
-        document.getElementById("description3").value = values[20];
-        document.getElementById("description4").value = values[21];
-        document.getElementById("description5").value = values[22];
-        document.getElementById("description6").value = values[23];
-        document.getElementById("description7").value = values[24];
-       document.getElementById("cost1").value = values[25];
-        document.getElementById("cost2").value = values[26];
-        document.getElementById("cost3").value = values[27];
-        document.getElementById("cost4").value = values[28];
-        document.getElementById("cost5").value = values[29];
-        document.getElementById("cost6").value = values[30];
-        document.getElementById("cost7").value = values[31];
-       document.getElementById("items1").value = values[32];
-        document.getElementById("items2").value = values[33];
-        document.getElementById("items3").value = values[34];
-        document.getElementById("items4").value = values[35];
-        document.getElementById("items5").value = values[36];
-        document.getElementById("items6").value = values[37];
-        document.getElementById("items7").value = values[38];
-        document.getElementById("total1").value = values[39];
-        document.getElementById("total2").value = values[40];
-        document.getElementById("total3").value = values[41];
-        document.getElementById("total4").value = values[42];
-        document.getElementById("total5").value = values[43];
-        document.getElementById("total6").value = values[44];
-        document.getElementById("total7").value = values[45];
-        document.getElementById("grandTotal").value = values[46];
-        document.getElementById("youth_total_input").value = values[47];
-        document.getElementById("benefit_per_youth").value = values[48];
-
-        });
-    </script>
 
     <div>
     <br>
@@ -153,16 +229,6 @@
       input.value = formattedPhoneNumber;
     }
 
-    // function checkField(currentFieldId, nextFieldId) {
-    //     const currentField = document.getElementById(currentFieldId);
-    //     const nextField = document.getElementById(nextFieldId);
-        
-    //     if (currentField.value.trim() !== '') {
-    //         nextField.removeAttribute('disabled');
-    //     } else {
-    //         nextField.setAttribute('disabled', 'disabled');
-    //     }
-    // }
   </script>
 
     <div>
@@ -508,16 +574,5 @@
       </script>
     </div> 
   </div> 
-
-    <div class="container">
-      <div class="center">
-        <input id="saveForm" name="saveForm" type="submit" value="Submit" class="submit-button" color="blue">
-      </div>
-    </div>
-
 </form>
-
-  <footer>
-    <p>Date Updated: May 21, 2024<br>
-  </footer>
 </html>
